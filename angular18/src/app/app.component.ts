@@ -8,6 +8,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
+import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
+import dayMinWidthPlugin from '@fullcalendar/scrollgrid'; // Add this line
 
 @Component({
   selector: 'app-root',
@@ -24,19 +26,60 @@ export class AppComponent {
       dayGridPlugin,
       timeGridPlugin,
       listPlugin,
+      resourceTimeGridPlugin,
+      dayMinWidthPlugin
     ],
     headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      left: 'title',
+      center: '',
+      right: 'prev,next today'
     },
-    initialView: 'dayGridMonth',
+    events:[
+      { id: '1', resourceId: 'b', start: '2024-06-21T16:00:00', end: '2024-06-21T16:15:00', description: 'IG 13 B A O O T CHROMATECH', batch: '206631', minutes: 15, squares: 15, squresRemaining: 10 },
+    ],
+    resources: [
+      { id: 'a', title: 'Lisec 1' },
+      { id: 'b', title: 'Lisec 2' },
+      { id: 'c', title: 'Lisec 3' },
+      { id: 'd', title: 'Room D' },
+      { id: 'e', title: 'Room E' },
+      { id: 'f', title: 'Room F' },
+      { id: 'g', title: 'Room G' },
+      { id: 'h', title: 'Room H' },
+      { id: 'i', title: 'Room I' },
+      { id: 'j', title: 'Room J' },
+      { id: 'k', title: 'Room K' },
+      { id: 'l', title: 'Room L' },
+      { id: 'm', title: 'Room M' },
+      { id: 'n', title: 'Room N' },
+      { id: 'o', title: 'Room O' },
+      { id: 'p', title: 'Room P' },
+      { id: 'q', title: 'Room Q' },
+      { id: 'r', title: 'Room R' },
+      { id: 's', title: 'Room S' },
+      { id: 't', title: 'Room T' },
+      { id: 'u', title: 'Room U' },
+      { id: 'v', title: 'Room V' },
+      { id: 'w', title: 'Room W' },
+      { id: 'x', title: 'Room X' },
+      { id: 'y', title: 'Room Y' },
+      { id: 'z', title: 'Room Z' }
+
+    ],
+    initialView: 'resourceTimeGridDay',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
+    schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+    allDaySlot: false,
+    slotDuration: '00:05:00',
+    nowIndicator: true,
+    stickyHeaderDates: true,
+    dayMinWidth: 350,
+stickyFooterScrollbar : true,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this)
